@@ -1,0 +1,19 @@
+#RULES {
+    background-color: #222299;
+}
+
+embed {
+    border: solid 1px black;
+}
+
+#VIDSPAN {
+    min-width:640px;
+}
+
+#tag_cloud ul {
+    list-style-type: none;
+}
+#tag_cloud ul li {
+    display: inline-block;
+    padding:2px;
+}

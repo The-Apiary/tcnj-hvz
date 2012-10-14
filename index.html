@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Humans vs Zombies @ TCNJ</title>
+    <link href="assets/css/bootstrap.min.css" rel="stylesheet">
+  </head>
+  <body>
+    <div class="navbar navbar-inverse">
+      <div class="navbar-inner">
+	<ul class="nav">
+	  <li class="active"><a href="#welcome-tab" data-toggle="tab" class="brand">HvZ@TCNJ</a></li>
+	  <li><a id="score-link" href="#score-tab" data-toggle="tab">Scoreboard</a></li>
+	  <li><a href="#map-tab" data-toggle="tab">Campus Map</a></li>
+	  <li><a href="#my-tab" data-toggle="tab">My Profile</a></li>
+	</ul>
+      </div>
+    </div>
+    <div id="notify-div"></div>
+    <div class="tabbable">
+      <div class="tab-content">
+	<div class="tab-pane active" id="welcome-tab">
+	  This is a description of what Manhunt is and what HvZ is.  You could have a link to the rules page here.  In fact, that sounds like a fabululous page.  There should definately be one of those!
+	</div>
+	<div class="tab-pane" id="score-tab">
+	  <div class="span4">
+	    <h3>Zombie Leader Board</h3>
+	    <span id="zombie-count-active"></span>
+	    <span id="zombie-count-starved"></span>
+	    <span id="human-count"></span>
+	    <ol id="zombie-list"><p>No zombies have been revealed!</p></ol>
+	  </div>
+	  <div class="span4">
+	    <h3>HvZ@TCNJ Twitter Feed</h3>
+	    <a class="twitter-timeline" href="https://twitter.com/TCNJ" data-widget-id="256840155980234752">Tweets by @TCNJ</a>
+	    <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0];if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src="//platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script>
+	  </div>
+	</div>
+	<div class="tab-pane" id="map-tab">
+	  map
+	</div>
+	<div class="tab-pane" id="my-tab">
+	  profile
+	</div>
+      </div>
+      <footer class="pagination-centered">Author | Nicholas Vitovitch</footer>
+    </div>
+    <script src="http://code.jquery.com/jquery-latest.js"></script>
+    <script src="assets/js/bootstrap.min.js"></script>
+    <script src="assets/js/scores.js"></script>
+    <script src="assets/js/notifications.js"></script>
+  </body>
+</html>

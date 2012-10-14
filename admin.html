@@ -1,0 +1,64 @@
+<?php
+
+require "assets/php/admin-auth.php";
+
+?>
+
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Humans vs Zombies @ TCNJ</title>
+    <link href="assets/css/bootstrap.min.css" rel="stylesheet">
+  </head>
+  <body>
+    <div class="navbar navbar-inverse">
+      <div class="navbar-inner">
+	<ul class="nav">
+	  <li><a href="./#welcome" class="brand">HvZ@TCNJ</a></li>
+	  <li><a href="./#score-tab">Scoreboard</a></li>
+	  <li><a href="./#map-tab">Campus Map</a></li>
+	  <li><a href="./#my-tab">My Profile</a></li>
+	  <li class="active"><a href="">Admin</a></li>
+	</ul>
+      </div>
+    </div>
+    <div class="row">
+      <div class="span3" style="background:#EEEEFF">
+        <ul class="nav nav-list">
+	  <li class="nav-header">Administrative Tasks</li>
+	  <li class="active"><a href="#actions-tab" data-toggle="tab"><i class="icon-chevron-right"></i>Actions</a></li>
+	  <li id="players-btn"><a href="#players-tab" data-toggle="tab"><i class="icon-chevron-right"></i>Players</a></li>
+	  <li><a href="#settings-tab" data-toggle="tab"><i class="icon-chevron-right"></i>Settings</a></li>
+	</ul>
+      </div>
+      <div class="span9" style="background:#EEEEFF">
+	<div class="tabbable">
+	  <div class="tab-content">
+	    <div class="tab-pane active" id="actions-tab">
+	      <h3>Actions</h3>
+	    </div>
+	    <div class="tab-pane" id="players-tab">
+	      <h3>Players</h3>
+	      <span>Key: <span>
+	      <span class="label label-info">Waiting</span>
+	      <span class="label label-success">Human</span>
+	      <span class="label label-warning">Zombie</span>
+	      <span class="label label-important">Kicked</span>
+	      <span class="badge">Kills</span>
+	      <span class="badge badge-inverse">Warnings</span>
+	      <table class="table table-hover" id="player-table">
+		<p>There are no players at this time.</p>
+	      </table>
+	    </div>
+	    <div class="tab-pane" id="settings-tab">
+	      <h3>Settings</h3>
+	    </div>
+	  </div>
+	</div>
+      </div>
+    </div>
+    <script src="http://code.jquery.com/jquery-latest.js"></script>
+    <script src="assets/js/bootstrap.min.js"></script>
+    <script src="assets/js/admin.js"></script>
+  </body>
+</html>
