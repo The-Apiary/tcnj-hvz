@@ -16,23 +16,32 @@ for($i = 0; $i < 50; $i++) {
   $l = $lname[rand(0,5)];
   $u = $f.".".$l;
   $e = $u."@gmail.com";
-  $c = "";
   $s = $status[rand(0,4)];
+  $k = array();
+  if($s == 'zombie' || $s == 'alpha') {
+    for($ii = rand(0,5); $ii>0; $ii--) {
+      $k[] = array(
+        'id'=>"K1L73DID",
+	'time'=>12423456,
+	'place'=>"somewhere"
+      );
+    }
+  }
+  $c = "";
   for($j = 0; $j < 8; $j++) {
     $c.= $alpha[rand(0,61)];
-  } 
+  }
   $doc = array(
     "id"=>$c,
     "email"=>$e,
     "status"=>$s,
-    "password"=>$c,
+    "password"=>sha1($c),
     "first"=>$f,
     "last"=>$l,
     "username"=>$u,
     "lmessage"=>0,
     "etime"=>"n/a",
-    "score"=>0,
-    "kills"=>array(),
+    "kills"=>$k,
     "warnings"=>array()
   );
 

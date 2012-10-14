@@ -4,18 +4,34 @@ $mongo = new Mongo();
 $db = $mongo->hvz;
 $players = $db->players;
 
-$cursor = $players->find()->limit(25);
-$cursor->sort(array('kills'=>-1));
+$h = $players->find(array("status"=>"human"))->count();
+$z = $players->find(array(
+  "status"=>array(
+    '$in'=>array('alpha','zombie'))))->count();
 
-$arr = array();
+$js = "function() {
+  return this.status == 'zombie' ||
+         (this.status == 'alpha' && this.kills.length > 3);
+}";
 
+$cursor = $players->find(array('$where'=>$js))->limit(25)->sort(array('kills'=>-1));
+
+$arr = array(
+  'humans'=>$h,
+  'zombies'=>$z
+);
+
+$l = array();
 foreach($cursor as $doc) {
-  $arr[] = array(
+  $l[] = array(
     "username"=>$doc['username'],
     "kills"=>$doc['kills'],
+    "status"=>$doc['status'],
     "etime"=>$doc['etime']
   );
 }
+
+$arr['leaders'] = $l;
 
 echo json_encode($arr);
 

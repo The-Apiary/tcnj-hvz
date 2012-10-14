@@ -1,19 +1,23 @@
-#RULES {
-    background-color: #222299;
+.banner {
+  background:teal;
 }
 
-embed {
-    border: solid 1px black;
+.banner-zombie {
+  background:yellow;
 }
 
-#VIDSPAN {
-    min-width:640px;
+.banner-human {
+  background:green;
 }
 
-#tag_cloud ul {
-    list-style-type: none;
+.banner-alpha {
+  background:orange;
 }
-#tag_cloud ul li {
-    display: inline-block;
-    padding:2px;
+
+.banner-wait {
+  background:blue;
+}
+
+.banner-kicked {
+  background:red;
 }
