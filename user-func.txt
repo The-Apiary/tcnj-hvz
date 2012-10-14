@@ -1,0 +1,8 @@
+add a kill
+change their username
+change their password
+view their warnings
+view their status
+view their kills
+view their accomplishments
+submit a mod message
