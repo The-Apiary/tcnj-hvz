@@ -1,8 +1,24 @@
-add a kill
-change their username
-change their password
-view their warnings
-view their status
-view their kills
-view their accomplishments
-submit a mod message
+players:
+	username
+	password
+	view messages(warnings)
+	view achievements
+	submit mod message
+
+zombies:
+	add a kill
+	report human sightings
+
+humans:
+	warn other humans
+	report zombie sightings
+
+admin:
+	view messages
+	send messages
+	award achievements
+	edit rules
+	change plater status
+
+SCOPE!!!
+	site should last over multiple games!

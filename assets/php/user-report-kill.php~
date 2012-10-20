@@ -1,0 +1,31 @@
+<?php
+
+require "user-auth.php";
+
+$err = array();
+if(!isset($_POST['code'],$_POST['place'])) {
+  $err[] = "Woah, did you forget to fill something out?";
+} else if($_SESSION['mode'] != 'zombie') {
+  $err[] = "Hold on a tic - you're not a zombie!  No can do!";
+} else if(zombie_check($_SESSION['code'])) {
+  $err[] = "Either no game or no zombie.";
+}
+
+
+// check alleged deceased
+$fa = array('id'=>$_POST['id'],'mode'=>'human');
+$dead = $players->findOne($fa);
+
+if(count($dead) == 0) die();
+
+// add kill stats to self
+$ks = array('id'=>$dead['id'],
+	    'time'=>time(),
+	    'place'=>$_POST['place']);
+$ua = array('$inc'=>array('rkills',1),
+	    '$push'=>array('kills'=>$ks));
+$players->update('id'=>$_SESSION['id'],$ua);
+// turn deceased
+$players->update($fa,array('mode'=>'zombie'));
+
+?>

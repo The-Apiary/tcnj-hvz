@@ -1,4 +1,4 @@
-var status_class = {
+var mode_class = {
   "wait":"info",
   "human":"success",
   "alpha":"warning",
@@ -17,14 +17,14 @@ $(".dd").click(function() {
 });
 
 $("#players-btn").click(function() {
-  $.getJSON("assets/php/players.php", function(json) {
+  $.getJSON("assets/php/admin-get-user-data.php", function(json) {
     if(json.length > 0) {
       $("#players-tab p").hide();
     }else{
       $("#players-tab p").unhide();
     }
     var table =
-"<table class=table>"+
+"<table class='table'>"+
 "  <thead>"+
 "    <tr>"+
 "      <th>ID</th>"+
@@ -38,7 +38,7 @@ $("#players-btn").click(function() {
 "<tbody>";
     for(var i=0; i<json.length; i++) {
       var str = 
-"<tr class="+status_class[json[i].status]+" id=player-"+json[i].id+">"+
+"<tr class="+mode_class[json[i].mode]+" id=player-"+json[i].id+">"+
 "  <td>"+json[i].id+"</td>"+
 "  <td>"+json[i].username+"</td>"+
 "  <td>"+json[i].first+" "+json[i].last+"</td>"+
@@ -46,9 +46,9 @@ $("#players-btn").click(function() {
 "  <td>"+json[i].etime+"</td>"+
 "  <td>"+
 "    <span class='badge'>"+json[i].kills.length+"</span>"+
-"    <span class='badge badge-inverse'>"+json[i].warnings.length+"</span>"+
+"    <span class='badge badge-inverse'>"+json[i].messages.length+"</span>"+
 "  </td>"+
-"  <td class='dd'><i class='icon-chevron-down'></i></td>"+
+//"  <td class='dd'><i class='icon-chevron-down'></i></td>"+
 "</tr>";
       table += str;
     }

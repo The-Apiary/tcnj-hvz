@@ -14,11 +14,10 @@ require "assets/php/admin-auth.php";
     <div class="navbar navbar-inverse">
       <div class="navbar-inner">
 	<ul class="nav">
-	  <li><a href="./#welcome" class="brand">HvZ@TCNJ</a></li>
-	  <li><a href="./#score-tab">Scoreboard</a></li>
-	  <li><a href="./#map-tab">Campus Map</a></li>
-	  <li><a href="./#my-tab">My Profile</a></li>
-	  <li class="active"><a href="">Admin</a></li>
+	  <li><a href="." class="brand">HvZ@TCNJ</a></li>
+	</ul>
+	<ul class="nav pull-right">
+	  <li><a href="assets/php/user-logout.php">Logout</a></li>
 	</ul>
       </div>
     </div>
@@ -46,7 +45,7 @@ require "assets/php/admin-auth.php";
 	      <span class="label label-important">Kicked</span>
 	      <span class="badge">Kills</span>
 	      <span class="badge badge-inverse">Warnings</span>
-	      <table class="table table-hover" id="player-table">
+	      <table class="table table-hover table-condensed" id="player-table">
 		<p>There are no players at this time.</p>
 	      </table>
 	    </div>

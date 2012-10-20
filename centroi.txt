@@ -1,0 +1,6 @@
+enqueue random node
+
+dequeue node and mark
+calculate mean
+if mean < lowestMean, lowestMean = mean, save node
+enqueue nodes of distance less than average

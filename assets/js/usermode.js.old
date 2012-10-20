@@ -1,0 +1,122 @@
+var playerActions = ["Change Username",
+		     "Change Password",
+		     "View Messages",
+		     "Send Message"];
+var zombieActions = ["Add A Kill"];
+
+// On page load...
+$.getJSON('assets/php/usermode.php', function(json) {
+    // Change to switch statement...
+    if(json.mode == 'default'){ setDefaultMode(); }
+    if(json.mode == 'human'){ setHumanMode(); }
+    if(json.mode == 'alpha'){ setAlphaMode(); }
+    if(json.mode == 'zombie'){ setZombieMode(json.email); }
+    if(json.mode == 'wait'){ setZombieMode(); }
+    if(json.mode == 'kicked'){ setKickedMode(); }
+    if(json.mode != 'default'){ addPlayerActions(); }
+    // Input handlers here...
+});
+
+// Function defs...
+var buildModal = function(mode,code) {
+    var title = "Title";
+    var body = "";
+
+    if(mode == 1 && code == 0) {
+	title = "Change Username";
+	body =
+"<form action='assets/php/change-username.php' method='post'>"+
+"  <input type='text' name='username' placeholder='New Username'>"+
+"  <input type='password' name='pass' placeholder='Password'>"+
+"  <button type='submit' class='btn btn-primary'>Change</button>"+
+"</form>";
+    }else if(mode == 1 && code == 1) {
+	title = "Change Password";
+	body =
+"<form action='assets/php/change-password.php' method='post'>"+
+"  <input type='password' name='pass' placeholder='Password'>"+
+"  <input type='password' name='npass1' placeholder='New Password'>"+
+"  <input type='password' name='npass2' placeholder='New Password'>"+
+"  <button type='submit' class='btn btn-primary'>Change</button>"+
+"</form>";	
+    }else if(mode == 1 && code == 2) {
+	title = "View Messages";
+    }else if(mode == 1 && code == 3) {
+	title = "Send Message";
+    }
+
+    $("#the-modal .modal-header h3").remove();
+    $("#the-modal .modal-header").append("<h3>"+title+"</h3>");
+    $("#the-modal .modal-body").html(body);
+}
+
+var addPlayerActions = function() {
+    var btns = "";
+    for(var i = 0; i < playerActions.length; i++) {
+	btns +=
+"<a href='#the-modal' role='button' "+
+"class='btn btn-large btn-block'>"+playerActions[i]+"</button>";
+    }
+    $("#action-span h3").after(btns);
+    $("#action-span a").click(function(){
+	for(var i = 0; i < playerActions.length; i++) {
+	    if(playerActions[i] == $(this).text()){buildModal(1,i);}
+	}
+	$("#the-modal").modal('show');
+    });
+}
+
+var setHumanMode = function() {
+
+}
+
+var setZombieMode = function(email) {
+    $("#banner").addClass("banner-zombie");
+    $("#banner h1").text("Greetings ZOMBIE");
+    $("#banner p").text("Welcome to the undead...");
+
+    var dd = 
+"<ul class='dropdown-menu' role='menu' aria-labelledby='nav-drop'>"+
+"  <li><a tabindex='-1' href='assets/php/logout.php'>Logout</a></li>"+
+"</ul>";
+    $(".navbar .dropdown").append(dd);
+    $(".navbar .dropdown > a").html(email+"<c class='caret'></c>");
+
+    var zbtns = "";
+    for(var i = 0; i < zombieActions.length; i++) {
+	zbtns +=
+"<a href='#the-modal' role='button' "+
+"class='btn btn-large btn-block btn-warning'>"+zombieActions[i]+"</button>";
+    }
+    $("#action-span h3").after(zbtns);
+    $("#action-span a.btn-zombie").click(function(){
+	for(var i = 0; i < zombieActions.length; i++) {
+	    if(zombieActions[i] == $(this).text()){buildModal(2,i);}
+	}
+	$("#the-modal").modal('show');
+    });    
+}
+
+var setAlphaMode = function() {
+}
+
+var setWaitMode = function() {
+}
+
+var setKickedMode = function() {
+}
+
+var setDefaultMode = function() {
+    $("#banner").addClass("banner");
+    $("#banner h1").text("Humans vs. Zombies");
+    $("#banner p").text("HvZ tagline here...");
+
+    var dd = 
+"<form class='dropdown-menu' action='assets/php/login.php'"+
+"  role='mode' aria-labelledby='nav-drop' method='post' id='df'>"+
+"  <input type='text' placeholder='Email' name='email'>"+
+"  <input type='password' placeholder='Password' name='pass'>"+
+"  <button type='submin' class='btn btn-primary'>Login</input>"+
+"</form>";
+    $(".navbar .dropdown").append(dd);
+}

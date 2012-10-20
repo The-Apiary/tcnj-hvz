@@ -1,0 +1,59 @@
+At any time, the following PHP attributes should be assumed
+
+1. SESSION variables
+   'id'
+   'email'
+   'mode'
+
+Given these assumptions, we should enable the following functions
+
+1. Full player data (note: mode is also exposed)
+   'zombie'
+	username
+	expire time (etime)
+	rank
+	kill list
+	message list
+	achievement list
+
+   'human'
+	username
+	message list
+	achievement list
+
+   'waiting'
+	username
+	message list
+	achievement list
+
+   'kicked'
+	username
+	message list
+	achievement list	
+
+   'spectator'
+	nothing
+
+2. Login
+3. Logout
+4. Change Password
+5. Change Username
+6. Report a Kill
+7. Send a Message to the Mods
+8. Get full player stats (rounds turned,alpha,survived,t kills,missions1,missionsl)
+
+Considering global functions, we should be able to
+
+1. View global announcements
+2. View events
+3. View possible achievements
+4. View active global announcement
+5. View global scores
+
+As administrators, we should be able to
+
+1. Send a message to a player
+2. Change a player's mode
+3. Create events
+4. Award some achievements
+5. Send banner-style messages to everyone!

@@ -1,4 +1,4 @@
-.banner {
+.banner-spectator {
   background:teal;
 }
 
@@ -20,4 +20,43 @@
 
 .banner-kicked {
   background:red;
+}
+
+.canvas-center {
+  position:absolute;
+  left: 50%;
+}
+
+.canvas-overlay {
+  border-radius:5px;
+  background-color:rgba(010,010,010,0.6);
+  position:relative;
+  left:-50%;
+  top:70px;
+}
+
+.canvas-overlay h1 {
+  letter-spacing:3px;
+  color:#EEEEEE;
+  font-family:"Courier New", Courier, monospace;
+  font-size:800%;
+  padding:50px;
+}
+
+.canvas-overlay p {
+  text-align: center;
+  font-family: "Courier New", Courier, monospace;
+  font-size: 200%;
+  color: #EEEEEE;
+  padding-bottom:40px;
+}
+
+.canvas-overlay span {
+  font-size:150%;
+}
+
+#actions ul {
+    list-style-type:none;
+    padding:0;
+    margin:0;
 }
