@@ -19,12 +19,20 @@
 	      HvZ@TCNJ</a>
 	  </li>
 	  <li><a href="#rules-tab" data-toggle="tab">Rules</a></li>
+	  <li><a href="#achievements-tab" data-toggle="tab">Achievements</a></li>
 	</ul>
 	<ul class="nav pull-right">
 	  <li class="dropdown">
 	    <a href="#" id="nav-drop" role="button"
 	       class="dropdown-toggle" data-toggle="dropdown">
 	      Login<span class="caret"></span></a>
+	    <form class="dropdown-menu">
+	      <input type="text" placeholder="TCNJ Email">
+	      <input type="password" placeholder="Password">
+	      <a class="btn btn-primary">Submit</a>
+	      <div class="divider"></div>
+	      <a>Forget Password?</a>
+	    </form>
 	  </li>
 	</ul>
       </div>
@@ -54,7 +62,7 @@
 	    <div class="tab-pane active" id="dash-tab">
 	      <div class="container">
 		<div class="row">
-		  <div class="span4" id="score-span">
+		  <div class="span3" id="score-span">
 		    <h3>Zombie Leader Board</h3>
 		    <span id="zombie-count"></span>
 		    <span id="human-count"></span>
@@ -62,17 +70,23 @@
 		      <p>No zombies have been revealed!</p>
 		    </ol>
 		  </div>
-		  <div class="span4" id="actions">
+		  <div class="span6" id="actions">
 		    <ul>
 		      <li>
-			<a class="btn btn-primary btn-block">Quick Kill</a>
+			Quick Kill
 		      </li>
 		      <li>
-			Form goes here
+			Quick Kill Form
+		      </li>
+		      <li>
+			Sign Up
+		      </li>
+		      <li>
+			Sign Up Form
 		      </li>
 		    </ul>
 		  </div>
-		  <div class="span4" id="twitter-span">
+		  <div class="span3" id="twitter-span">
 		    <h3>Twitter</h3>
 		    <a class="twitter-timeline" href="https://twitter.com/TCNJ" data-widget-id="256840155980234752">Tweets by @TCNJ</a>
 		    <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0];if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src="//platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script>
@@ -86,10 +100,20 @@
 		<li>This is another rule</li>
 	      </ol>
 	    </div>
+	    <div class="tab-pane" id="achievements-tab">
+	      <ol>
+		<li>This is an achievement.</li>
+		<li>This is another achievement.</li>
+	      </ol>
+	    </div>
           </div>
 	</div>
       </div>
-      <footer class="pagination-centered">
+      <footer class="footer pagination-centered">
+	<a>Contact</a>
+	<a>Legal</a>
+	<a>Main Site</a>
+	<br>
 	Author | Nicholas Vitovitch
       </footer>
       <div class="modal hide" id="the-modal" role="dialog"

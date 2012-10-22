@@ -1,0 +1,45 @@
+players
+	id
+	email
+	password
+	first name
+	last name
+	last-message
+	etime
+	status
+	player status [waiting,human,zombie,kicked]
+	kills
+		1 id time loc
+		2 id time loc
+		...
+	warnings
+		1 type text
+		2 type text
+		...
+
+notifications
+	_id
+	type
+	time
+	txt
+
+map-actions
+	_id
+	time
+	team
+	type
+	txt
+
+Messages
+	kicked message
+	human message
+	ban message
+	zombie message
+	alpha message
+
+issues
+	_id
+	player id
+	txt
+	solution
+	status [open,closed]
