@@ -26,10 +26,10 @@
 	    <a href="#" id="nav-drop" role="button"
 	       class="dropdown-toggle" data-toggle="dropdown">
 	      Login<span class="caret"></span></a>
-	    <form class="dropdown-menu">
-	      <input type="text" placeholder="TCNJ Email">
-	      <input type="password" placeholder="Password">
-	      <a class="btn btn-primary">Submit</a>
+	    <form class="form-login dropdown-menu" action="assets/php/user-login.php" method="post">
+	      <input class="input-email" type="text" placeholder="TCNJ Email">
+	      <input class="input-pass" type="password" placeholder="Password">
+	      <a class="input-submit btn btn-primary">Submit</a>
 	      <div class="divider"></div>
 	      <a>Forget Password?</a>
 	    </form>
@@ -136,5 +136,6 @@
     <script src="assets/js/view-loader.js"></script>
     <script src="assets/js/cool.js"></script>
     <script src="assets/js/subheader.js"></script>
+    <script src="assets/js/forms.js"></script>
   </body>
 </html>

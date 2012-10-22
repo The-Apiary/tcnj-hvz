@@ -11,6 +11,8 @@ if($game==null) {
   $arr['mode'] = 'no-game';
 } else if ($game['stime'] > time()) {
   $arr['mode'] = 'pre-game';
+  $arr['stime'] = $game['stime'];
+  $arr['humans'] = count($game['players']);
 } else if ($game['etime'] < time()) {
   $arr['mode'] = 'post-game';
 } else {

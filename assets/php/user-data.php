@@ -1,57 +1,34 @@
 <?php
 
-require "user-auth.php";
+session_start();
 
-// If no session info, return spectator mode
-if($_SESSION['mode'] == 'default'){
- echo json_encode(array('mode'=>'default'));
- die();
-}
-
-$mongo = new Mongo();
-$db = $mongo->hvz;
-$players = $db->players;
-
-$player = $players->findOne(array("id"=>$_SESSION['id']));
-
-// If no matching player, return spectator mode
-if(count($player) == 0) {
-  echo json_encode(array('mode'=>'default'));
-  die();
-}
-
-// These fields are common to all player modes
-$arr = array("mode"=>$player['mode'],
-	     "username"=>$player['username'],
-	     "email"=>$player['email'],
-	     "messages"=>$player['messages'],
-	     "achievements"=>$player['achievements']);
-
-// zombie/alpha specific
-if($player['mode'] == 'zombie' || $player['mode'] == 'alpha') {
-  $arr['etime'] = $player['etime'];
-  $arr['kills'] = $player['kills'];
-
-  $fa = array('mode'=>array('$in'=>array('zombie','alpha')));
-  $sa = array('rkills'=>-1);
-  $r = 1;
-  $cursor = $players->find($fa)->sort($sa);
-  foreach($cursor as $doc) {
-    if($doc['id'] == $_SESSION['id']) {
-      break;
-    } else {
-      $r++;
+$arr = array();
+if(isset($_SESSION['email'])) {
+  $mongo = new Mongo();
+  $db = $mongo->hvz;
+  $games = $db->games;
+  $users = $db->users;
+  $user = $users->findOne(array('email'=>$_SESSION['email']));
+  
+  // If user exists, retrieve information.  Essentialally an SQL join.
+  if($user != null) {
+    $arr = $user;
+    $js = "function() { if(this.state != 'alive') { return false; } else { for(var i = 0; i < this.players.length; i++) { if(this.players[i]._id == '".$user['_id']."') { return true; }}} return false; }"; 
+    $game = $games->findOne(array('$where'=>$js));
+    if($game != null) {
+      foreach($game['players'] as $player) {
+	if($player['_id'] == $user['_id']) {
+	  $arr = array_merge($arr,$player);
+	  break;
+	}
+      }
     }
+    unset($arr['_id'],$arr['pass'],$arr['ach']);
+    die(json_encode($arr));
   }
-  // This code broke :(
-  //for($cursor = $players->find($fa)->sort($sa); $cursor->hasNext()) {
-  //  $p = $cursor->getNext();
-  //  if($p['id'] == $_SESSION['id']) {break;}else{$r++;}
-  //}
-
-  $arr['rank'] = $r;
 }
-
-echo json_encode($arr);
+						
+$arr['mode'] = 'spectator';
+echo json_encode($arr); 
 
 ?>
