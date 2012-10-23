@@ -28,6 +28,8 @@
 }
 
 .canvas-overlay {
+  color:#EEEEEE;
+  font-family:"Courier New", Courier, monospace;
   border-radius:5px;
   background-color:rgba(010,010,010,0.6);
   position:relative;
@@ -37,22 +39,27 @@
 
 .canvas-overlay h1 {
   letter-spacing:3px;
-  color:#EEEEEE;
-  font-family:"Courier New", Courier, monospace;
   font-size:800%;
   padding:50px;
 }
 
 .canvas-overlay p {
   text-align: center;
-  font-family: "Courier New", Courier, monospace;
   font-size: 200%;
-  color: #EEEEEE;
   padding-bottom:40px;
 }
 
 .canvas-overlay span {
   font-size:150%;
+}
+
+.canvas-overlay #countdown {
+  letter-spacing:3px;
+  text-align:center;
+}
+
+.canvas-overlay #countdown tr.table-times td {
+    font-size:200%;
 }
 
 #actions ul {

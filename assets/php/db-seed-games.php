@@ -34,8 +34,8 @@ foreach($ids as $id) {
 }
 
 $doc = array('state'=>'alive',
-	     'stime'=>time()-3600,
-	     'etime'=>time()+3600,
+	     'stime'=>time()+60,
+	     'etime'=>time()+120,
 	     'players'=>$p,
 	     'kills'=>array());
 
